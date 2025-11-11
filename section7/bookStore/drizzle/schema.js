@@ -1,11 +1,15 @@
 
 
 
+//books schema 
 
-import { pgTable, integer, varchar } from "drizzle-orm/pg-core";
 
-export const usersTable = pgTable("books", {
-  id: integer("id").primaryKey(),
-  name: varchar("name", { length: 255 }).notNull(),
-  email: varchar("email", { length: 255 }).notNull().unique()
-});
+import { pgTable, uuid, varchar, text } from "drizzle-orm/pg-core";
+import { authorsTable } from "./author.js";
+
+export const booksTable = pgTable("books", {
+    id: uuid().primaryKey().defaultRandom(),
+    title: varchar({ length: 100 }).notNull(),
+    description: text(),
+    authorID : uuid().references(()=>authorsTable.id).notNull(),
+})
