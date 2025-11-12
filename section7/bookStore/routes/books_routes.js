@@ -5,17 +5,17 @@ import { getAllBooks, getBookById , createBook , deleteBookById } from "../contr
 import { booksTable } from "../drizzle/schema.js";
 import { authorsTable } from "../drizzle/author.js";
 
-export const router = Router();
+export const bookRouter = Router();
 
 //GET /api/books
-router.get('/', getAllBooks)
+bookRouter.get('/', getAllBooks)
 
 //GET /api/books/id
-router.get('/:id', getBookById)
+bookRouter.get('/:id', getBookById)
 
 //POST /api/books
-router.post('/', createBook)
+bookRouter.post('/', createBook)
 
 //DELETE /api/books/:id
-router.delete('/:id', deleteBookById)
+bookRouter.delete('/:id', deleteBookById)
 
